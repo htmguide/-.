@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YTMP3 - Free YouTube to MP3 Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-color: #00ff00; /* Твой любимый хакерский зеленый */
+            --bg-color: #0a0a0a;
+            --text-color: #ffffff;
+        }
+        body { 
+            background: var(--bg-color); 
+            color: var(--text-color); 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            line-height: 1.6;
+        }
+        h1, h2, h3, .logo { 
+            font-family: 'Dela Gothic One', cursive; 
+            text-transform: uppercase;
+            color: var(--main-color);
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        
+        /* Секция конвертера */
+        .converter-box { 
+            background: #111; 
+            border: 3px solid var(--main-color); 
+            padding: 40px; 
+            text-align: center; 
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+            margin-bottom: 50px;
+        }
+        input { 
+            padding: 15px; 
+            width: 80%; 
+            max-width: 500px; 
+            background: #000; 
+            border: 1px solid var(--main-color); 
+            color: #0f0; 
+            font-family: monospace;
+            margin-bottom: 20px;
+            outline: none;
+        }
+        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        button { 
+            padding: 15px 30px; 
+            font-family: 'Dela Gothic One', cursive;
+            border: none; 
+            cursor: pointer; 
+            transition: 0.3s; 
+        }
+        .btn-mp3 { background: var(--main-color); color: #000; }
+        .btn-mp4 { background: #0080ff; color: #fff; }
+        button:hover { transform: scale(1.05); opacity: 0.9; }
+
+        /* Таблица */
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #111; }
+        th, td { border: 1px solid #333; padding: 12px; text-align: left; }
+        th { background: #1a1a1a; color: var(--main-color); }
+
+        /* Текстовые блоки */
+        .content-section { margin-top: 40px; text-align: left; }
+        .content-section h2 { border-bottom: 2px solid var(--main-color); display: inline-block; margin-bottom: 20px; }
+        .footer { text-align: center; padding: 40px; color: #555; font-size: 0.8em; border-top: 1px solid #222; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="converter-box">
+        <div class="logo" style="font-size: 3em; margin-bottom: 10px;">YTMP3</div>
+        <p>Free YouTube to MP3 Converter</p>
+        <input type="text" id="videoUrl" placeholder="Paste YouTube link here...">
+        <div class="btn-group">
+            <button class="btn-mp3" onclick="convert('mp3')">DOWNLOAD MP3</button>
+            <button class="btn-mp4" onclick="convert('mp4')">DOWNLOAD MP4</button>
+        </div>
+        <div id="status" style="margin-top: 15px; color: var(--main-color);">Ready to convert</div>
+    </div>
+
+    <div class="content-section">
+        <h1>YTMP3 - Free YouTube to MP3 Converter</h1>
+        <p>YTMP3 is the fastest, easiest, and most reliable YouTube to MP3 converter available online. It is completely free to use. Whether you want to save music for offline listening, extract audio from a podcast, or convert tutorials into audio files for convenience, YTMP3 is your go-to solution.</p>
+
+        <h2>Why Choose YTMP3?</h2>
+        <ul>
+            <li><strong>Lightning-Fast Conversions:</strong> Convert any YouTube video to MP3 in seconds. [cite: 2026-02-27]</li>
+            <li><strong>Superior Audio Quality:</strong> Choose from multiple MP3 bitrates, ranging from 64 kbps to 320 kbps. [cite: 2026-02-27]</li>
+            <li><strong>No Sign-Up Required:</strong> Use our tool instantly without an account. [cite: 2026-02-27]</li>
+        </ul>
+
+        <h2>YTMP3 Platform Features</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Fast Conversion</td><td>Convert YouTube videos to MP3 in seconds. [cite: 2026-02-27]</td></tr>
+                <tr><td>High-Quality Output</td><td>Choose MP3 bitrates up to 320 kbps. [cite: 2026-02-27]</td></tr>
+                <tr><td>Free Forever</td><td>No cost, subscriptions, or hidden charges. [cite: 2026-02-27]</td></tr>
+                <tr><td>Privacy-Focused</td><td>No tracking, no data collection, secure HTTPS. [cite: 2026-02-27]</td></tr>
+            </tbody>
+        </table>
+
+        <h2>How to Use (Step-by-Step)</h2>
+        <p>1. Copy the YouTube Video URL. [cite: 2026-02-27]<br>
+           2. Paste the URL into the input box above. [cite: 2026-02-27]<br>
+           3. Click Convert and then Download. [cite: 2026-02-27]</p>
+
+        <h2>Legal Disclaimer</h2>
+        <p style="font-size: 0.9em; color: #888;">YTMP3 is a free tool intended for personal use only. Users are solely responsible for ensuring they comply with YouTube’s Terms of Service. [cite: 2026-02-27]</p>
+    </div>
+</div>
+
+<div class="footer">
+    &copy; 2026 YTMP3 Service. Running on your local IP. [cite: 2026-02-22]
+</div>
+
+<script>
+    function convert(format) {
+        const url = document.getElementById('videoUrl').value;
+        const status = document.getElementById('status');
+        
+        if(!url) {
+            alert('Please dont leave a label empty!'); [cite: 2026-02-22]
+            return;
+        }
+        
+        status.innerHTML = `Connecting to api.ytmp3.tube for ${format.toUpperCase()}...`; [cite: 2026-02-27]
+        
+        // Тот самый редирект на API
+        setTimeout(() => {
+            window.location.href = `https://api.ytmp3.tube/download?url=${encodeURIComponent(url)}&format=${format}`; [cite: 2026-02-27]
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
